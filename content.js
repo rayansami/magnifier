@@ -20,15 +20,38 @@ document.onkeydown = document.onkeyup = function (e) {
     console.log(e.keyCode);
     map[e.keyCode] = e.type == 'keydown';
 
-    if( map[17] && map[16] && map[38]){
-        zoom++;
-        $(document.body).css('zoom',zoom.toString()+'%');
+    if( map[17] && map[16] && map[38]){        
+        increaseMagnification();
     }  
     else if(map[17] && map[16] && map[40])
-    {
-        zoom--;
-        $(document.body).css('zoom',zoom.toString()+'%');
+    {    
+        decreaseMagnification();
     }     
     
     console.log('no work');
 };
+
+function increaseMagnification(){
+    zoom++;
+    $(document.body).css('zoom',zoom.toString()+'%');
+}
+
+function decreaseMagnification(){
+    zoom--;
+    $(document.body).css('zoom',zoom.toString()+'%');
+}
+
+// For controlling zoom from extension UI. 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if(request.zoom == "Plus"){
+        increaseMagnification();
+      }
+      
+      if(request.zoom == "Minus"){
+        decreaseMagnification();
+      }            
+      
+      if (request.zoom == "Plus" || request.zoom == "Minus")
+        sendResponse({farewell: "working"});
+    });
