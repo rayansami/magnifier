@@ -26,9 +26,7 @@ document.onkeydown = document.onkeyup = function (e) {
     else if(map[17] && map[16] && map[40])
     {    
         decreaseMagnification();
-    }     
-    
-    console.log('no work');
+    }             
 };
 
 function increaseMagnification(){

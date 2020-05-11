@@ -15,3 +15,5 @@ The extention will be added to your browser by now. If you change any code pleas
 ### How to use the zoom
     To Zoom-in Press: Ctrl + Shift + Up-Arrow 
     To Zoom-out Press: Ctrl + Shift + Down-Arrow 
+
+    Or you can control zoom using UI
